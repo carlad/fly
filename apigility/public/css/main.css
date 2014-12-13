@@ -11,17 +11,27 @@ body {
   background-repeat: no-repeat;
   background-size: cover; }
 
+.sticky {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100%; }
+
 .searchbox {
   padding-top: 30px;
   background-color: rgba(0, 0, 0, 0.5); }
   .searchbox label {
     color: white; }
+  .searchbox.dark {
+    background-color: rgba(0, 0, 0, 0.7); }
+
+#results {
+  margin-top: 180px; }
 
 .results {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none; }
+  margin-bottom: 20px;
+  width: 100%; }
   .results td {
     vertical-align: top; }
   .results .weather i {
