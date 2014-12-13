@@ -33,6 +33,8 @@ Class Search {
 
         $results[] = $trip;
         $results[] = $trip;
+
+        return $results;
     }
 
 }

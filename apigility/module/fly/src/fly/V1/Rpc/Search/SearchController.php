@@ -8,7 +8,7 @@ class SearchController extends AbstractActionController
     
     function __construct() {
         
-        $this->mapper = new fly\model\Search();
+        $this->mapper = new \fly\model\Search();
         
     }
 
