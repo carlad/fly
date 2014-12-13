@@ -1,0 +1,17 @@
+.icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  vertical-align: text-top;
+  margin-right: 10px;
+}
+
+.icon-departure {
+  background-image: url("../img/takeoff.png");
+}
+
+.icon-land {
+  background-image: url("../img/land.png"); 
+}

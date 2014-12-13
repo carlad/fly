@@ -1,0 +1,26 @@
+@import "../modules/all";
+
+h1 {
+  color: white;
+}
+
+#submit {
+  margin-top: 28px;
+  width: 100%;
+}
+
+body {
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.searchbox {
+
+  label {
+    color: white;
+  }
+
+  padding-top: 30px;
+  background-color: rgba(#000000, .5 );
+}
