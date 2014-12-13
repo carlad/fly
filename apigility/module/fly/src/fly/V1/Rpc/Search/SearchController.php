@@ -15,11 +15,15 @@ class SearchController extends AbstractActionController
     
     public function searchAction()
     {
-    		#die('2345');
+        $originCity = $this->getRequest()->getQuery('originCity');
+        if ($originCity == 'BER') {
+            $originCity = "TXL";
+        }
+        
         $weatherType = 'sunny';
-        $fromDate = '2014-12-04';
-        $toDate = '2014-12-20';
-        $results = $this->mapper->getResults($weatherType, $fromDate, $toDate);
+        $fromDate = '2015-01-03';
+        $toDate = '2015-02-20';
+        $results = $this->mapper->getResults($originCity,$weatherType, $fromDate, $toDate);
         return $results;
         
     }
