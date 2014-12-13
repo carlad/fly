@@ -12,6 +12,7 @@ Class Search {
     public function getResults($weatherType, $fromDate, $toDate) {
         
         $possibleDestinations = $this->weatherService->getListOfPossibleDestinations($weatherType, $fromDate);
+        die('123');
         
         
         foreach ($possibleDestinations as $possibleDestination) {
@@ -22,9 +23,6 @@ Class Search {
         }
         
         
-        
-        
-
         $results = array();
 
 

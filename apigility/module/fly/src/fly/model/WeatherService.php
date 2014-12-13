@@ -23,8 +23,16 @@ Class WeatherService {
                         "carlaLiking": 5
                     },
          */
+
+        $countries = json_decode(file_get_contents(__DIR__.'/countriestocities.json'));
+        
+
         
         $result = array();
+
+
+foreach ($countries as $countryId => $country) { foreach ($country as $cities) { var_dump($countryId, $cities);}}
+
         
         $result[] = array(
             'cityName' => 'Dubai',
