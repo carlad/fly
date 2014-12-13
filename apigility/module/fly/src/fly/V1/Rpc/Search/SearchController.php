@@ -5,8 +5,18 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class SearchController extends AbstractActionController
 {
+    
+    function __construct() {
+        
+        $this->mapper = new fly\model\Search();
+        
+    }
+
+    
     public function searchAction()
     {
-    	return array('a' => 'b');
+        $results = $this->mapper->getResults();
+        return $results;
+        
     }
 }
