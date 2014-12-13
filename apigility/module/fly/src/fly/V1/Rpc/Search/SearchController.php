@@ -17,7 +17,7 @@ class SearchController extends AbstractActionController
     {
         $weatherType = 'sunny';
         $fromDate = '2014-12-04';
-        $toDate = = '2014-12-20';
+        $toDate = '2014-12-20';
         $results = $this->mapper->getResults($weatherType, $fromDate);
         return $results;
         

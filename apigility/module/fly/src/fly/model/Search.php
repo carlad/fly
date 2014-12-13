@@ -6,7 +6,7 @@ Class Search {
     
     public function __construct() {
         $this->weatherService = new WeatherService();
-        $this->flightService = new FlightService();
+        // $this->flightService = new FlightService();
     }
 
     public function getResults($weatherType, $fromDate, $toDate) {
