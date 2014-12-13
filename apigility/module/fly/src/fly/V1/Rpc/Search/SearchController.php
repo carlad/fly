@@ -15,7 +15,10 @@ class SearchController extends AbstractActionController
     
     public function searchAction()
     {
-        $results = $this->mapper->getResults();
+        $weatherType = 'sunny';
+        $fromDate = '2014-12-04';
+        $toDate = = '2014-12-20';
+        $results = $this->mapper->getResults($weatherType, $fromDate);
         return $results;
         
     }

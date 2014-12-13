@@ -3,8 +3,27 @@
 namespace fly\model;
 
 Class Search {
+    
+    public function __construct() {
+        $this->weatherService = new WeatherService();
+        $this->flightService = new FlightService();
+    }
 
-    public function getResults() {
+    public function getResults($weatherType, $fromDate, $toDate) {
+        
+        $possibleDestinations = $this->weatherService->getListOfPossibleDestinations($weatherType, $fromDate);
+        
+        
+        foreach ($possibleDestinations as $possibleDestination) {
+            
+            // $this->flightService->findFlights($destionation,$fromDate,$toDate)
+            
+            
+        }
+        
+        
+        
+        
 
         $results = array();
 
