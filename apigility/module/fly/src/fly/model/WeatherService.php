@@ -28,17 +28,17 @@ Class WeatherService {
         
 
         
-        $result = array();
+        $results = array();
 
 
-foreach ($countries as $countryId => $country) { foreach ($country as $cities) { var_dump($countryId, $cities);}}
+#foreach ($countries as $countryId => $country) { foreach ($country as $cities) { var_dump($countryId, $cities);}}
 
         
-        $result[] = array(
+        $results[] = array(
             'cityName' => 'Dubai',
             'temperatureForecastDepartureDate' => 25.7
         );
-        $result[] = array(
+        $results[] = array(
             'cityName' => 'Miami',
             'temperatureForecastDepartureDate' => 28.1
         );

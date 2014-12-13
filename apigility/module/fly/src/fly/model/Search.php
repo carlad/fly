@@ -3,53 +3,36 @@
 namespace fly\model;
 
 Class Search {
-    
+
     public function __construct() {
         $this->weatherService = new WeatherService();
-        // $this->flightService = new FlightService();
+        $this->flightService = new FlightService();
+        $this->airportService = new AirportService();
     }
 
-    public function getResults($weatherType, $fromDate, $toDate) {
-        
+    public function getResults($originCity, $weatherType, $fromDate, $toDate) {
+
         $possibleDestinations = $this->weatherService->getListOfPossibleDestinations($weatherType, $fromDate);
-        die('123');
-        
-        
-        foreach ($possibleDestinations as $possibleDestination) {
-            
-            // $this->flightService->findFlights($destionation,$fromDate,$toDate)
-            
-            
-        }
-        
-        
+
         $results = array();
 
-
-        $trip = array();
-        $trip["destination"] = array(
-            "cityName" => "Dubai",
-            "airportCode" => "DXB"
-        );
-
-        $trip["flightInformation"] = array(
-            "distanceMiles" => 1234,
-            "flightDurationMinutes" => 330
-        );
+        foreach ($possibleDestinations as $possibleDestination) {
+            try {
+                $dst = $this->airportService->mapCityToAirportCode($possibleDestination["cityName"]);
 
 
-        $trip["weather"] = array(
-            "temperatureForecastDepartureDate" => 25.7,
-            "magdaFactor" => 2,
-            "carlaLiking" => 5
-        );
-        $trip["price"] = array(
-            "totalPrice" => 540,
-            "currency" => "EUR"
-        );
+                $flight = $this->flightService->findCheapestFlight($originCity, $dst, $fromDate, $toDate);
+                if ($flight) {
+                    $flight["weather"] = array(
+                        "temperatureForecastDepartureDate" => $possibleDestination["temperatureForecastDepartureDate"],
+                    );
+                    $results[] = $flight;
+                }
+            } catch (\Exception $e) {
+                error_log($e->getMessage()); 
+            }
+        }
 
-        $results[] = $trip;
-        $results[] = $trip;
 
         return $results;
     }
