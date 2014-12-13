@@ -58,7 +58,11 @@ class SupportedoriginsResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        return new ApiProblem(405, 'The GET method has not been defined for collections');
+        return array(
+
+        array('cityCode'=>'BER','cityName' => 'Berlin'), 
+        array('cityCode'=>'FRA','cityName' => 'Frankfurt')
+        );
     }
 
     /**
