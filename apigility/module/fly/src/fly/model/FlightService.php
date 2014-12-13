@@ -19,21 +19,24 @@ Class FlightService {
             'maxredirects' => 5,
             'timeout' => 30
         ));
+        
+        $this->config = new Config();
     }
 
     private function doRequest($params, $responseMode = "light") {
         $client = $this->httpClient;
         $request = array();
-
-        $request["User"] = "LufthansaTest";
-        $request["Pass"] = "8b35317451999984abf8bf38b5863341da2b2e97";
+        
+        $request["User"] = $this->config->getFastSearchUser();
+        $request["Pass"] = $this->config->getFastSearchApikey();
+        
         $request["Environment"] = "lh-vzg";
         $request["Response"] = $responseMode;
 
         $fullRequest = array_merge($request, $params);
 
 
-        $client->setUri('http://lh-fs-json.production.vayant.com/');
+        $client->setUri($this->config->getFastSearchHost());
         $client->setMethod('POST');
         $client->setRawBody(json_encode($fullRequest));
         $client->setEncType("application/json");
