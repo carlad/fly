@@ -1,0 +1,72 @@
+#results {
+    margin-top: 180px;
+}
+
+.results{
+  $border: 10px;
+
+
+  margin-bottom: 20px;
+
+  td {
+    vertical-align: top;
+  }
+
+  width: 100%;
+  
+  .weather{
+    i {
+      border: solid 1px black;
+      padding: $border;
+      border-radius: 2px;
+      margin-right: $border;
+    }
+  }
+
+  .wi {
+    margin-bottom: 1.5 * $border;
+  }
+
+  .result-item{
+    background: white;
+    padding: 20px;
+
+
+    div{
+      display: inline-block;}
+
+    .location{
+      border-right: 1px dotted black;
+      padding: $border;
+
+      .city{
+        font-size: 4.2rem;
+        margin-bottom: 0;
+        display: block;
+      }
+
+    }
+    .weather{
+      padding: $border;
+      border-right: 1px dotted black;
+
+    }
+    .dates{
+      padding: $border;
+      border-right: 1px dotted black;
+
+    }
+    .time{
+      padding: $border;
+      border-right: 1px dotted black;
+    }
+    .price{
+      span {
+        border-left: 1px dotted white;
+        margin-left: 10px;
+        padding-left: 10px;
+        display: inline-block;
+      }
+    }
+  }
+} 
