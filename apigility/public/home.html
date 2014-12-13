@@ -38,34 +38,23 @@
       maxDate: "+7D"
     });
 
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
+    var availableTags = [];
+
+    $.get( "/supportedorigins", function( data ) {
+      var locations = data._embedded.supportedorigins;
+      for (i = 0; i < locations.length; i++ ) {
+        availableTags.push(locations[i].cityName + " - " + locations[i].cityCode);
+      }
+    });
 
     $( "#place" ).autocomplete({
       source: availableTags
     });
+
+    $( "#place" ).on( "autocompleteselect", function( event, ui ) {
+      var code = ui.item.value.split("-")[1].trim();
+      $("#cityCode").val(code);
+    } );
   });
   </script>
 
@@ -83,12 +72,13 @@
   </div>
 
   <div class="searchbox">
-    <form action="." method="post">
+    <form action="/api/search" method="post">
       <div class="container">
         <div class="row">
           <div class="five columns">
             <label for="from">From</label>
             <input id="place" class="u-full-width" type="text" placeholder="e.g. Berlin">
+            <input id="cityCode" type="hidden" name="cityCode" value="">
           </div>
           <div class="five columns">
             <label for="weather">What weather do you prefere?</label>
