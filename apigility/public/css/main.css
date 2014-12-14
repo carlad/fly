@@ -2,9 +2,8 @@
 h1 {
   color: white; }
 
-#submit {
-  margin-top: 28px;
-  width: 100%; }
+#submitButton {
+  margin-top: 28px; }
 
 body {
   background-image: url("../img/bg.jpg");
