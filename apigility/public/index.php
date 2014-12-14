@@ -3,6 +3,7 @@
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
  */
+date_default_timezone_set("Europe/Berlin");
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative

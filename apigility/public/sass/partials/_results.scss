@@ -1,5 +1,5 @@
 #results {
-    margin-top: 180px;
+  margin-top: 100px;
 }
 
 .results{
@@ -42,7 +42,8 @@
       .city{
         font-size: 4.2rem;
         margin-bottom: 0;
-        display: block;
+        display: inline-block;
+        margin-right: 10px;
       }
 
     }

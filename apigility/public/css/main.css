@@ -16,18 +16,17 @@ body {
   top: 0px;
   left: 0px;
   z-index: 999;
-  width: 100%; }
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7) !important; }
 
 .searchbox {
   padding-top: 30px;
   background-color: rgba(0, 0, 0, 0.5); }
   .searchbox label {
     color: white; }
-  .searchbox.dark {
-    background-color: rgba(0, 0, 0, 0.7); }
 
 #results {
-  margin-top: 180px; }
+  margin-top: 100px; }
 
 .results {
   margin-bottom: 20px;
@@ -52,7 +51,8 @@ body {
       .results .result-item .location .city {
         font-size: 4.2rem;
         margin-bottom: 0;
-        display: block; }
+        display: inline-block;
+        margin-right: 10px; }
     .results .result-item .weather {
       padding: 10px;
       border-right: 1px dotted black; }
