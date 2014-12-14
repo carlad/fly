@@ -1,5 +1,9 @@
 #results {
   margin-top: 100px;
+
+  .button-primary {
+    font-size: 20px;
+  }
 }
 
 .results{
@@ -16,15 +20,12 @@
   
   .weather{
     i {
-      border: solid 1px black;
-      padding: $border;
-      border-radius: 2px;
-      margin-right: $border;
+      font-style: normal;
     }
   }
 
   .wi {
-    margin-bottom: 1.5 * $border;
+    //margin-bottom: 1.5 * $border;
   }
 
   .result-item{
@@ -62,7 +63,9 @@
       border-right: 1px dotted black;
     }
     .price{
+      font-size: 16px;
       span {
+        font-size: 11px;
         border-left: 1px dotted white;
         margin-left: 10px;
         padding-left: 10px;
