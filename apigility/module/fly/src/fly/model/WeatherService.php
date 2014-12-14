@@ -6,6 +6,9 @@ Class WeatherService {
 
     public function getListOfPossibleDestinations($weatherType, $date) {
         
+        
+        //$countries = json_decode(file_get_contents(__DIR__.'/countriestocities.json'));
+        
         /*
          * Go to a weather service
          * 
@@ -23,8 +26,21 @@ Class WeatherService {
                         "carlaLiking": 5
                     },
          */
-
-        $countries = json_decode(file_get_contents(__DIR__.'/countriestocities.json'));
+        
+        $airportService = new AirportService();
+        
+        $knownDestinations = $airportService->getCityAirportMap();
+        
+        
+        $dateObj = \DateTime::createFromFormat("Y-m-d", $date);
+        
+        foreach ($knownDestinations as $destination) {
+            $this->getForecastForDateLive($destination, $dateObj);
+            
+            
+            
+        }
+        
         
 
         
@@ -50,6 +66,41 @@ Class WeatherService {
         
 
         return $results;
+        
     }
+
+    public function getForecastForDateLive($city, \DateTime $date) {
+     
+        $httpClient = new \Zend\Http\Client();
+        $httpClient->setOptions(array(
+            'maxredirects' => 5,
+            'timeout' => 2
+        ));
+        
+        $apiUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json";
+        
+        $uri = $apiUrl . '&q=London&cnt=14';
+        
+        $httpClient->setUri($uri);
+        $httpClient->send();
+        
+        $response = $httpClient->getResponse()->getBody();
+        $json = \Zend\Json\Json::decode($response, \Zend\Json\Json::TYPE_ARRAY);
+        
+        $forecasts = $json['list'];
+        
+        
+        foreach ($forecasts as $forecast) {
+            $forecastDate = new \DateTime(strtotime($forecast['dt']));
+            var_dump($forecastDate);
+        }
+        
+        die('asaas');
+        
+        
+        
+    }
+        
+        
 
 }
