@@ -93,7 +93,7 @@ Class WeatherService {
             'temperatureForecastDepartureDate' => 24.3
         );
         $results[] = array(
-            'cityName' => 'Lod Angeles',
+            'cityName' => 'Los Angeles',
             'temperatureForecastDepartureDate' => 28.3
         );
         $results[] = array(

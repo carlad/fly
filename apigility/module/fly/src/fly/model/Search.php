@@ -32,7 +32,12 @@ Class Search {
                 error_log($e->getMessage()); 
             }
         }
-
+        
+           // sort by price
+        usort($results, function($a, $b) {
+            return $a['price']['totalPrice'] - $b['price']['totalPrice'];
+        });
+        
 
         return $results;
     }

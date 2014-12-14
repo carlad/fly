@@ -9,7 +9,6 @@ Class FlightService {
      * @var \Zend\Http\Client
      */
     private $httpClient;
-    
     private $airportService;
 
     public function __construct() {
@@ -19,17 +18,17 @@ Class FlightService {
             'maxredirects' => 5,
             'timeout' => 30
         ));
-        
+
         $this->config = new Config();
     }
 
     private function doRequest($params, $responseMode = "light") {
         $client = $this->httpClient;
         $request = array();
-        
+
         $request["User"] = $this->config->getFastSearchUser();
         $request["Pass"] = $this->config->getFastSearchApikey();
-        
+
         $request["Environment"] = "lh-vzg";
         $request["Response"] = $responseMode;
 
@@ -77,38 +76,33 @@ Class FlightService {
                 $flight["flightInformation"] = array(
                     "flightDurationMinutes" => $flightRaw['OutboundTotalTravelMinutes']
                 );
-                                
+
                 $flight["schedule"] = array(
                     "departureTime" => strtotime($flightRaw["OutboundFlights"][0]["Departure"]),
                 );
-                
+
                 $miles = 0;
                 foreach ($flightRaw['OutboundFlights'] as $outboundFlight) {
                     $miles = $miles + $outboundFlight["EQP"];
                     // set value to latest segment
                     $flight["schedule"]["arrivalTime"] = strtotime($outboundFlight["Arrival"]);
                 }
-                
-                foreach($flight["schedule"] as $key => $timestamp) {
+
+                foreach ($flight["schedule"] as $key => $timestamp) {
                     $keyFormattedTimestamp = $key . 'Formatted';
                     $flight["schedule"][$keyFormattedTimestamp] = date("d.m.Y H:i", $timestamp);
                 }
-                
+
                 $flight["flightInformation"]["distanceMiles"] = $miles;
                 $flight["destination"] = array(
                     "cityName" => $this->airportService->mapAirportCodeToCity($to),
                     "airportCode" => $to
                 );
-
-
                 $flights[] = $flight;
             }
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
-
-
-
 
         return $flights;
     }
