@@ -1,19 +1,19 @@
 <?php
+
 namespace fly\V1\Rest\Supportedorigins;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
-class SupportedoriginsResource extends AbstractResourceListener
-{
+class SupportedoriginsResource extends AbstractResourceListener {
+
     /**
      * Create a resource
      *
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    public function create($data)
-    {
+    public function create($data) {
         return new ApiProblem(405, 'The POST method has not been defined');
     }
 
@@ -23,8 +23,7 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $id
      * @return ApiProblem|mixed
      */
-    public function delete($id)
-    {
+    public function delete($id) {
         return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
     }
 
@@ -34,8 +33,7 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    public function deleteList($data)
-    {
+    public function deleteList($data) {
         return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
@@ -45,8 +43,7 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $id
      * @return ApiProblem|mixed
      */
-    public function fetch($id)
-    {
+    public function fetch($id) {
         return new ApiProblem(405, 'The GET method has not been defined for individual resources');
     }
 
@@ -56,13 +53,10 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  array $params
      * @return ApiProblem|mixed
      */
-    public function fetchAll($params = array())
-    {
-        return array(
-
-        array('cityCode'=>'BER','cityName' => 'Berlin'), 
-        array('cityCode'=>'FRA','cityName' => 'Frankfurt')
-        );
+    public function fetchAll($params = array()) {
+        $airportService = new \fly\model\AirportService();
+        return $airportService->getAirports("DE");
+        
     }
 
     /**
@@ -72,8 +66,7 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    public function patch($id, $data)
-    {
+    public function patch($id, $data) {
         return new ApiProblem(405, 'The PATCH method has not been defined for individual resources');
     }
 
@@ -83,8 +76,7 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    public function replaceList($data)
-    {
+    public function replaceList($data) {
         return new ApiProblem(405, 'The PUT method has not been defined for collections');
     }
 
@@ -95,8 +87,8 @@ class SupportedoriginsResource extends AbstractResourceListener
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
-    public function update($id, $data)
-    {
+    public function update($id, $data) {
         return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
     }
+
 }

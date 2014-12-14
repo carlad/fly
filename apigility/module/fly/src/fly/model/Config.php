@@ -5,20 +5,20 @@ namespace fly\model;
 Class Config {
 
     public function getFastSearchHost() {
-        return 'x';
+        return 'http://lh-fs-json.production.vayant.com/';
     }
 
     public function getFastSearchUser() {
-        return "x";
+        return "LufthansaTest";
     }
 
     public function getFastSearchApikey() {
-        return "x";
+        return "8b35317451999984abf8bf38b5863341da2b2e97";
     }
 
     public function getLufthansaApikey() {
 
-        return "x";
+        return "up4xq6t8sxqa8d6beedqde78";
     }
 
 }

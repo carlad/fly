@@ -77,10 +77,23 @@ Class FlightService {
                 $flight["flightInformation"] = array(
                     "flightDurationMinutes" => $flightRaw['OutboundTotalTravelMinutes']
                 );
+                                
+                $flight["schedule"] = array(
+                    "departureTime" => strtotime($flightRaw["OutboundFlights"][0]["Departure"]),
+                );
+                
                 $miles = 0;
                 foreach ($flightRaw['OutboundFlights'] as $outboundFlight) {
                     $miles = $miles + $outboundFlight["EQP"];
+                    // set value to latest segment
+                    $flight["schedule"]["arrivalTime"] = strtotime($outboundFlight["Arrival"]);
                 }
+                
+                foreach($flight["schedule"] as $key => $timestamp) {
+                    $keyFormattedTimestamp = $key . 'Formatted';
+                    $flight["schedule"][$keyFormattedTimestamp] = date("d.m.Y H:i", $timestamp);
+                }
+                
                 $flight["flightInformation"]["distanceMiles"] = $miles;
                 $flight["destination"] = array(
                     "cityName" => $this->airportService->mapAirportCodeToCity($to),
