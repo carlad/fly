@@ -3,22 +3,22 @@
 namespace fly\model;
 
 Class Config {
- 
-    public function getFastSearchHost()
-    {
+
+    public function getFastSearchHost() {
         return 'x';
     }
-        
-     
-    public function getFastSearchUser()
-    {
+
+    public function getFastSearchUser() {
         return "x";
     }
-    
-    public function getFastSearchApikey()
-    {
+
+    public function getFastSearchApikey() {
         return "x";
-        
     }
-    
+
+    public function getLufthansaApikey() {
+
+        return "x";
+    }
+
 }
