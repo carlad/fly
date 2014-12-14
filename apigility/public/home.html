@@ -53,7 +53,7 @@
 
     $( "#place" ).on( "autocompleteselect", function( event, ui ) {
       var code = ui.item.value.split("-")[1].trim();
-      $("#cityCode").val(code);
+      $("#originCity").val(code);
     } );
   });
   </script>
@@ -72,13 +72,13 @@
   </div>
 
   <div class="searchbox">
-    <form action="/api/search" method="post">
+    <form action="/api/search" method="get">
       <div class="container">
         <div class="row">
           <div class="five columns">
             <label for="from">From</label>
             <input id="place" class="u-full-width" type="text" placeholder="e.g. Berlin">
-            <input id="cityCode" type="hidden" name="cityCode" value="">
+            <input id="originCity" type="hidden" name="originCity" value="">
           </div>
           <div class="five columns">
             <label for="weather">What weather do you prefere?</label>
