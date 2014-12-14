@@ -3,13 +3,12 @@
 namespace fly\model;
 
 Class AirportService {
-    
-    
+
     public function __construct() {
         $this->config = new Config();
     }
-    
-     private function getCityAirportMap() {
+
+    public function getCityAirportMap() {
 
         $map = array();
         $map['DXB'] = 'Dubai';
@@ -19,7 +18,7 @@ Class AirportService {
         return $map;
     }
 
-        public function mapAirportCodeToCity($airportCode) {
+    public function mapAirportCodeToCity($airportCode) {
         $map = $this->getCityAirportMap();
 
         if (array_key_exists($airportCode, $map)) {
@@ -43,27 +42,22 @@ Class AirportService {
         // did not found anything
         throw new \Exception("No city to airport mapping found for '{$string}'");
     }
-    
+
     public function getAirports($countryCode) {
         $httpClient = new \Zend\Http\Client();
         $httpClient->setOptions(array(
             'maxredirects' => 5,
             'timeout' => 30
         ));
-        
+
         $uri = "https://api.lufthansa.com/v1/references/airports/TXL?lang=DE&lh_location=1&api_key=" . $this->config->getLufthansaApikey();
-        
+
         $httpClient->setUri($uri);
-        
-        #$response = $httpClient->send();
-        
-        #var_dump($response->getBody());
-        
-        #die();
+
+        // hard code some airports because API did not work with client
         
         
-    
-    return array(
+        return array(
             array('cityCode' => 'BER', 'cityName' => 'Berlin'),
             array('cityCode' => 'CGN', 'cityName' => 'Köln'),
             array('cityCode' => 'DUS', 'cityName' => 'Düsseldorf'),
@@ -75,8 +69,5 @@ Class AirportService {
             array('cityCode' => 'STR', 'cityName' => 'Stuttgart')
         );
     }
-    
-    
-    
-}
 
+}
