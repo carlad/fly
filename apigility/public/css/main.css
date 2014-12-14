@@ -2,9 +2,8 @@
 h1 {
   color: white; }
 
-#submit {
-  margin-top: 28px;
-  width: 100%; }
+#submitButton {
+  margin-top: 28px; }
 
 body {
   background-image: url("../img/bg.jpg");
@@ -27,6 +26,8 @@ body {
 
 #results {
   margin-top: 100px; }
+  #results .button-primary {
+    font-size: 20px; }
 
 .results {
   margin-bottom: 20px;
@@ -34,12 +35,7 @@ body {
   .results td {
     vertical-align: top; }
   .results .weather i {
-    border: solid 1px black;
-    padding: 10px;
-    border-radius: 2px;
-    margin-right: 10px; }
-  .results .wi {
-    margin-bottom: 15px; }
+    font-style: normal; }
   .results .result-item {
     background: white;
     padding: 20px; }
@@ -62,11 +58,14 @@ body {
     .results .result-item .time {
       padding: 10px;
       border-right: 1px dotted black; }
-    .results .result-item .price span {
-      border-left: 1px dotted white;
-      margin-left: 10px;
-      padding-left: 10px;
-      display: inline-block; }
+    .results .result-item .price {
+      font-size: 16px; }
+      .results .result-item .price span {
+        font-size: 11px;
+        border-left: 1px dotted white;
+        margin-left: 10px;
+        padding-left: 10px;
+        display: inline-block; }
 
 .icon {
   background-repeat: no-repeat;

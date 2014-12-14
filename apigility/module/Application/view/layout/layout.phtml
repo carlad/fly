@@ -19,7 +19,8 @@
   $(function() {
     $( ".datepicker" ).datepicker({
       minDate: 0,
-      maxDate: "+7D"
+      maxDate: "+7D",
+      dateFormat: 'yy-mm-dd'
     });
 
     var availableTags = [];
@@ -55,8 +56,11 @@
         success: function(data) {
           $.each(data, function(key,value) {
             console.log(value);
+            var origin = $("#originCity").val();
+            var destination = value.destination.airportCode;
+
             $("#results").append(
-              "<table class='results'><tr class='result-item'><td class='location'><span class='city'>" + value.destination.cityName + "</span><span class='airport'>" + value.destination.airportCode + "</span></td><td class='weather'><i class='wi wi-day-sunny'></i><i>" + value.weather.temperatureForecastDepartureDate + "</i></td><td class='dates'><i class='icon icon-departure'></i>" + value.schedule.departureTimeFormatted +"<br><i class='icon icon-land'></i>" + value.schedule.arrivalTimeFormatted + "</td><td class='time'>" + parseInt(parseInt(value.flightInformation.flightDurationMinutes)/60)+ " HOURS" + "</td><td class='price'><button class='button-primary'>" + value.price.totalPrice + "&nbsp;" + value.price.currency + "<span>Book Now</span></button></td></tr></table");
+              "<table class='results'><tr class='result-item'><td class='location'><span class='city'>" + value.destination.cityName + "</span><span class='airport'>" + value.destination.airportCode + "</span></td><td class='weather'><i class='wi wi-day-sunny'></i><br><i>" + value.weather.temperatureForecastDepartureDate + "°C" +"</i></td><td class='dates'><i class='icon icon-departure'></i>" + value.schedule.departureTimeFormatted +"<br><i class='icon icon-land'></i>" + value.schedule.arrivalTimeFormatted + "</td><td class='time'>" + parseInt(parseInt(value.flightInformation.flightDurationMinutes)/60)+ " HOURS" + "</td><td class='price'><a class='button button-primary' href='https://mobile.lufthansa.com/rs/bkg/login.do?origin="+origin+"&destination="+destination+"&dtout1=22&ymout=122014&tmoutbound=0&dtin1=25&ymin=122014&tminbound=0'>" + value.price.totalPrice + "&nbsp;" + value.price.currency + "<span>Book Now</span></a></td></tr></table");
           })}
       });
     });
@@ -90,7 +94,7 @@
             <input id="originCity" type="hidden" name="originCity" value="">
           </div>
           <div class="three columns">
-            <label for="weather">Weather?</label>
+            <label for="weather">Weather</label>
             <select class="u-full-width">
             <option value="Option 1"><div class="icon icon-sun">&nbsp;</div>sunny</option>
             <option value="Option 2">windy</option>
@@ -99,11 +103,11 @@
           </div>
           <div class="two columns">
             <label for="from">Departure</label>
-            <input class="u-full-width datepicker" type="text" placeholder="" id="fromDate">
+            <input class="u-full-width datepicker" type="text" placeholder="" id="fromDate" name="fromDate">
           </div>
           <div class="two columns">
-            <label for="weather">Arrival</label>
-            <input class="u-full-width datepicker" type="text" placeholder="" id="ToDate">
+            <label for="weather">Return</label>
+            <input class="u-full-width datepicker" type="text" placeholder="" id="toDate" name="toDate">
           </div>
           <div class="two columns u-full-width">
             <button id="submitButton" class="button-primary">Search</button>
