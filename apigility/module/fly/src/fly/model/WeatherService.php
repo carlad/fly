@@ -54,7 +54,7 @@ Class WeatherService {
         );
         
                 $results[] = array(
-            'cityName' => 'Tunis',
+            'cityName' => 'Rabat',
             'temperatureForecastDepartureDate' => 23.1
         );
         
@@ -107,7 +107,7 @@ Class WeatherService {
             'temperatureForecastDepartureDate' => 30.3
         );
                 $results[] = array(
-            'cityName' => 'Sao Paolo',
+            'cityName' => 'Sao Paulo',
             'temperatureForecastDepartureDate' => 31.1
         );
 
