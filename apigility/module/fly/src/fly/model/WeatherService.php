@@ -48,7 +48,85 @@ Class WeatherService {
             'temperatureForecastDepartureDate' => 23.1
         );
         
+                $results[] = array(
+            'cityName' => 'Bangkok',
+            'temperatureForecastDepartureDate' => 29.5
+        );
+        
+                $results[] = array(
+            'cityName' => 'Tunis',
+            'temperatureForecastDepartureDate' => 23.1
+        );
+        
+                $results[] = array(
+            'cityName' => 'Istanbul',
+            'temperatureForecastDepartureDate' => 19.3
+        );
 
+        $results[] = array(
+            'cityName' => 'Athens',
+            'temperatureForecastDepartureDate' => 15.1
+        );
+
+        $results[] = array(
+            'cityName' => 'Tel Aviv',
+            'temperatureForecastDepartureDate' => 25.1
+        );
+
+        $results[] = array(
+            'cityName' => 'Bejing',
+            'temperatureForecastDepartureDate' => 20.1
+        );
+
+        $results[] = array(
+            'cityName' => 'Barcelona',
+            'temperatureForecastDepartureDate' => 14.8
+        );
+                $results[] = array(
+            'cityName' => 'Lisbon',
+            'temperatureForecastDepartureDate' => 18.9
+        );
+                $results[] = array(
+            'cityName' => 'Cairo',
+            'temperatureForecastDepartureDate' => 21.3
+        );
+                $results[] = array(
+            'cityName' => 'San Fransisco',
+            'temperatureForecastDepartureDate' => 24.3
+        );
+                $results[] = array(
+            'cityName' => 'Lod Angeles',
+            'temperatureForecastDepartureDate' => 28.3
+        );
+                $results[] = array(
+            'cityName' => 'Mexico City',
+            'temperatureForecastDepartureDate' => 31.3
+        );
+                $results[] = array(
+            'cityName' => 'Caracas',
+            'temperatureForecastDepartureDate' => 30.3
+        );
+                $results[] = array(
+            'cityName' => 'Sao Paolo',
+            'temperatureForecastDepartureDate' => 31.1
+        );
+
+                $results[] = array(
+            'cityName' => 'Santiago',
+            'temperatureForecastDepartureDate' => 34.1
+        );
+        
+                        $results[] = array(
+            'cityName' => 'Jakarta',
+            'temperatureForecastDepartureDate' => 35.1
+        );
+        
+                        $results[] = array(
+            'cityName' => 'Tokyo',
+            'temperatureForecastDepartureDate' => 18.8
+        );
+        
+        
         return $results;
     }
 
