@@ -14,6 +14,7 @@ Class AirportService {
         $map = array();
         $map['DXB'] = 'Dubai';
         $map['MIA'] = 'Miami';
+        $map['TUN'] = 'Tunis';
 
         return $map;
     }
