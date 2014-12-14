@@ -42,6 +42,12 @@ Class WeatherService {
             'cityName' => 'Miami',
             'temperatureForecastDepartureDate' => 28.1
         );
+        
+        $results[] = array(
+            'cityName' => 'Tunis',
+            'temperatureForecastDepartureDate' => 23.1
+        );
+        
 
         return $results;
     }
