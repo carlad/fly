@@ -9,8 +9,8 @@ Class WeatherService {
         $useStaticData = true; // do this for performance reasons;
 
         if ($useStaticData) {
-            return $this->getStaticForecasts();
-        }
+            $results = $this->getStaticForecasts();
+        } else {
 
         $airportService = new AirportService();
         $knownDestinations = $airportService->getCityAirportMap();
@@ -22,6 +22,16 @@ Class WeatherService {
             $forecast = $this->getForecastForDateLive($destination, $dateObj);
             if ($forecast) {
                 $results[] = $forecast;
+            }
+        }
+        
+        }
+        
+        // filter if temperature is below 22
+        
+        foreach ($results as $key => $result) {
+            if ($result['temperatureForecastDepartureDate'] <= 22) {
+                unset ($results[$key]);
             }
         }
 
@@ -95,7 +105,7 @@ Class WeatherService {
             'temperatureForecastDepartureDate' => 30.3
         );
         $results[] = array(
-            'cityName' => 'Sao Paolo',
+            'cityName' => 'Sao Paulo',
             'temperatureForecastDepartureDate' => 31.1
         );
         $results[] = array(
@@ -116,7 +126,7 @@ Class WeatherService {
         
         // get more random temperatures
         foreach ($results as $key => $result) {
-            $results[$key]['temperatureForecastDepartureDate'] = rand(170,345)/10;
+            $results[$key]['temperatureForecastDepartureDate'] = rand(150,345)/10;
         }
 
 
@@ -131,7 +141,7 @@ Class WeatherService {
             'timeout' => 2
         ));
 
-        $apiUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&APPID=";
+        $apiUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&APPID=d4fdc53f3bde947e7a3282e78789378a";
 
         $uri = $apiUrl . '&q=London&cnt=14';
 
